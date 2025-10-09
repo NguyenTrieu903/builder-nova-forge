@@ -1,5 +1,8 @@
+'use client'
+
 import { ReactNode, useCallback, useMemo, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import {
   SidebarProvider,
   Sidebar,
@@ -22,7 +25,7 @@ import { cn } from "@/lib/utils";
 import { Activity, Cpu, Gauge, Power, Wifi } from "lucide-react";
 
 export default function AppLayout({ children }: { children: ReactNode }) {
-  const location = useLocation();
+  const pathname = usePathname();
   const [isDark, setIsDark] = useState(() =>
     typeof document !== "undefined"
       ? document.documentElement.classList.contains("dark")
@@ -58,12 +61,12 @@ export default function AppLayout({ children }: { children: ReactNode }) {
             <SidebarGroupLabel>Overview</SidebarGroupLabel>
             <SidebarMenu>
               {navItems.map((item) => {
-                const active = location.pathname === item.to;
+                const active = pathname === item.to;
                 const Icon = item.icon;
                 return (
                   <SidebarMenuItem key={item.to}>
                     <SidebarMenuButton asChild isActive={active} tooltip={item.label}>
-                      <Link to={item.to} className="flex items-center gap-2">
+                      <Link href={item.to} className="flex items-center gap-2">
                         <Icon className="shrink-0" />
                         <span>{item.label}</span>
                       </Link>

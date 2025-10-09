@@ -1,6 +1,6 @@
 import AppLayout from "@/components/layout/AppLayout";
 
-export default function Devices() {
+export default function DevicesPage() {
   return (
     <AppLayout>
       <div className="space-y-6">
