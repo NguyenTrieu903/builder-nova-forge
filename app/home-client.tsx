@@ -20,7 +20,7 @@ export default function HomeClient() {
 
   const energyData = useMemo(() => Array.from({ length: 24 }, (_, h) => ({
     hour: `${h}:00`,
-    kwh: Math.round(80 + Math.sin(h / 2) * 30 + (Math.random() * 10))
+    kwh: Math.round(80 + Math.sin(h / 2) * 30 + ((h * 7) % 10))
   })), []);
 
   const health = 86;

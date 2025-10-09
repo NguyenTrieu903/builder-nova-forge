@@ -23,14 +23,16 @@ import { Input } from "@/components/ui/input";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { cn } from "@/lib/utils";
 import { Activity, Cpu, Gauge, Power, Wifi } from "lucide-react";
+import { useEffect } from "react";
 
 export default function AppLayout({ children }: { children: ReactNode }) {
   const pathname = usePathname();
-  const [isDark, setIsDark] = useState(() =>
-    typeof document !== "undefined"
-      ? document.documentElement.classList.contains("dark")
-      : false,
-  );
+  const [isDark, setIsDark] = useState(false);
+
+  useEffect(() => {
+    // Check theme on client side only
+    setIsDark(document.documentElement.classList.contains("dark"));
+  }, []);
 
   const onToggleTheme = useCallback(() => {
     const root = document.documentElement;
@@ -113,7 +115,7 @@ export default function AppLayout({ children }: { children: ReactNode }) {
             <span className="flex items-center gap-1">
               <Activity className="size-3" /> Real-time telemetry active
             </span>
-            <span>© {new Date().getFullYear()} Pulse IoT</span>
+            <span>© 2025 Pulse IoT</span>
           </div>
         </footer>
       </SidebarInset>

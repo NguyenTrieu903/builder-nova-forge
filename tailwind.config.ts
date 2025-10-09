@@ -7,6 +7,8 @@ export default {
     "./components/**/*.{ts,tsx}",
     "./lib/**/*.{ts,tsx}",
     "./hooks/**/*.{ts,tsx}",
+    "./types/**/*.{ts,tsx}",
+    "./constants/**/*.{ts,tsx}",
     "./pages/**/*.{ts,tsx}"
   ],
   prefix: "",
